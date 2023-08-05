@@ -1,0 +1,75 @@
+# Tmux configuration for my PopOS Desktop
+
+# Unbind default prefix keys.
+unbind C-b
+# unbind \
+# unbind % # this command makes a new pane to the right
+
+# Change the prefix key to C-a 
+set -g prefix C-a
+bind C-a send-prefix
+
+
+# Change the default pane splits.
+bind | split-window -h -c "#{pane_current_path}"
+bind _ split-window -v -c "#{pane_current_path}"
+
+# switch panes using Alt-arrow without prefix
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# My tmux configuration, partly based on https://github.com/wbkang/wbk-stow/blob/master/tmux-config/.tmux.conf
+
+# Scroll History
+set -g history-limit 50000
+
+# show messages for 4 seconds instead
+set -g display-time 4000
+
+
+# Lower escape timing from 500ms to 50ms for quicker response to scroll-buffer access.
+set -s escape-time 50
+
+# Make mouse useful, tmux > 2.1 include select, resize pane/window and console wheel scroll
+set -g mouse on
+
+
+# set 256 color
+set -g default-terminal "xterm-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
+
+# Status Bar 
+
+# copy to system clipboard
+bind C-c run "tmux save-buffer - | xclip -i -sel clipboard"
+
+# paste from system clipboard
+bind C-v run "tmux set-buffer \"$(xclip -o -sel clipboard)\"; tmux paste-buffer"
+
+set -g @yank_selection_mouse 'clipboard' # this is needed to copy the mouse stuff to the system clipboard
+
+
+# set zsh as default shell
+set -g default-command /bin/zsh
+set -g default-shell /bin/zsh
+
+# --- Keep these at botom of this file ---
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+#--- Color Themes ---
+set -g @plugin "arcticicestudio/nord-tmux"
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+set -g @plugin 'tmux-plugins/tmux-battery' # shows battery stats in status ba
+set -g @plugin 'tmux-plugins/tmux-yank' # used for copying and pasting
+
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'git@github.com/user/plugin'
+# set -g @plugin 'git@bitbucket.com/user/plugin'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
