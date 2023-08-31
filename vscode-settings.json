@@ -1,0 +1,34 @@
+{
+    "workbench.colorTheme": "Nord",
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "Source Code Pro",
+    "editor.fontWeight": 600,
+    "[markdown]":{
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 85,
+    },
+    "workbench.editor.enablePreview": false,
+    "yaml.schemas": {
+        "file:///Users/benmonnier/.vscode/extensions/atlassian.atlascode-2.10.7/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "redhat.telemetry.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.autoReveal": false,
+    "json.format.enable": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.wordWrap": "wordWrapColumn",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "editor.wordWrapColumn": 120,
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.openRepositoryInParentFolders": "never",
+}
